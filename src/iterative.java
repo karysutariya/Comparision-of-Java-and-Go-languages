@@ -18,14 +18,15 @@ public class iterative {
         return temp*temp;
     }
 
-    public static double variance(double mean, double[] numbers) {
+    public static double variance(double[] numbers) {
         double total = 0;
         for(int i=0; i<n; i++)
         {
             double temp =numbers[i] - mean;
             total += square(temp);
         }
-        return total/n;
+        total = total /n;
+        return total;
     }
 
     public static double sqrt(double var)
@@ -60,7 +61,7 @@ public class iterative {
         }
         in.close();
         mean = cal_mean(numbers);
-        var = variance(mean, numbers);
+        var = variance(numbers);
         SD = sqrt(var);
         System.out.print("Standard deviation is "+SD);
     }
