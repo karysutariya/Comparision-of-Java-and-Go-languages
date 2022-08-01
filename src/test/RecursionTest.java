@@ -1,54 +1,83 @@
 package test;
-import code.recursion;
-import org.junit.Test;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import code.Recursion;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Logger;
+import org.junit.Test;
+
+/**
+ * The RecursionTest class tests Recursion class.
+ */
 public class RecursionTest {
-	
     
-    @Test
-    public void cal_mean() {
-        double[] numbers = {2,2,2};
-        int k=0;
-        recursion.n = 3;
-        recursion.mean = 0;
-        assertEquals (2.0,recursion.cal_mean(numbers,k));
-    }
+  /**
+   * Test method for calMean.
+   */
+  @Test
+    public void calMeanTest() {
+    final double[] numbers = { 2, 2, 2 };
+    Recursion.totaln = 3;
+    Recursion.mean = 0;
+    assertEquals(2.0, Recursion.calMean(numbers, 0), "Problem in calMeanTest()");
+  }
 
+  /**
+   * Test method for square.
+   */
+  @Test
+    public void squareTest() {
+    assertEquals(4.0, Recursion.square(2.0), "Problem in square()");
+  }
 
-    @Test
-    public void square() {
-        assertEquals (4.0,recursion.square(2.0));
-    }
-
-    @Test
+  /**
+   * Test method for variance.
+   */
+  @Test
     public void variance() {
-    	recursion.mean = 2;
-    	recursion.n = 3;
-        int k=0;
-        double[] numbers = {2,2,2};
-        assertEquals (0.0,recursion.variance(numbers, k));
-    }
+    Recursion.mean = 2;
+    Recursion.totaln = 3;
+    final double[] numbers = { 2, 2, 2 };
+    assertEquals(0.0, Recursion.variance(numbers, 0), "Problem in variance()");
+  }
 
-    @Test
-    public void sqrt() {
-    	recursion.var = 0.0;
-        assertEquals (0.0,recursion.sqrt());
-        recursion.var = 4.0;
-        assertEquals (2.0,recursion.sqrt());
-    }
+  /**
+   * Test method 1 for sqrt.
+   */
+  @Test
+    public void sqrtTest1() {
+    Recursion.var = 0.0;
+    assertEquals(0.0, Recursion.sqrt(), "Problem in sqrtTest1()");
+  }
 
-    @Test
-    public void main_test() {
-        InputStream sysInBackup = System.in;
-        ByteArrayInputStream in = new ByteArrayInputStream("2 2 2".getBytes());
-        System.setIn(in);
-        String [] args = new String[0];
-        recursion rec = new recursion(); 
-        rec.main(args);
-        System.setIn(sysInBackup);
+  /**
+   * Test method 2 for sqrt.
+   */
+  @Test
+    public void sqrtTest2() {
+    Recursion.var = 4.0;
+    assertEquals(2.0, Recursion.sqrt(), "Problem in sqrtTest2()");
+  }
+
+  /**
+   * Test method for main.
+   */
+  @Test
+    public void mainTest() {
+    final InputStream sysInBackup = System.in;
+    final ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
+    System.setIn(inp);
+    final String[] args = new String[0];
+    Recursion.main(args);
+    System.setIn(sysInBackup);
+    try {
+      sysInBackup.close();
+    } catch (IOException e) {
+      final Logger Log = Logger.getLogger("RecursionTest");
+      Log.warning(e.getMessage());
     }
+  }
 }
