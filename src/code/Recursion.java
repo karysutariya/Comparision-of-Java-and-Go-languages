@@ -109,7 +109,7 @@ public class Recursion {
         conditon = false;
       } catch (InputMismatchException e) {
         inputUser.next();
-        LOG.warning(e.getMessage());
+        LOG.warning("Please enter a number!");
       }
     }
     double[] numbers = new double[totaln];
@@ -121,7 +121,7 @@ public class Recursion {
         ijk++;
       } catch (InputMismatchException e) {
         inputUser.next();
-        LOG.warning(e.getMessage());
+        LOG.warning("Please enter a number!");
       }
     }
     inputUser.close();

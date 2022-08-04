@@ -70,14 +70,9 @@ public class IterativeTest {
     final ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
     System.setIn(inp);
     final String[] args = new String[0];
+    Iterative itr = new Iterative();
     Iterative.main(args);
     System.setIn(sysInBackup);
-    try {
-      sysInBackup.close();
-    } catch (IOException e) {
-      final Logger Log = Logger.getLogger("IterativeTest");
-      Log.warning(e.getMessage());
-    }
   }
 
 }

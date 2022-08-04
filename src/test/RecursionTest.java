@@ -71,13 +71,8 @@ public class RecursionTest {
     final ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
     System.setIn(inp);
     final String[] args = new String[0];
+    Recursion rec = new Recursion();
     Recursion.main(args);
     System.setIn(sysInBackup);
-    try {
-      sysInBackup.close();
-    } catch (IOException e) {
-      final Logger Log = Logger.getLogger("RecursionTest");
-      Log.warning(e.getMessage());
-    }
   }
 }
