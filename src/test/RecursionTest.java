@@ -4,9 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import code.Recursion;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Logger;
 import org.junit.Test;
 
 /**
@@ -68,11 +66,14 @@ public class RecursionTest {
   @Test
     public void mainTest() {
     final InputStream sysInBackup = System.in;
-    final ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
-    System.setIn(inp);
     final String[] args = new String[0];
-    Recursion rec = new Recursion();
+    ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
+    System.setIn(inp);
     Recursion.main(args);
+    inp = new ByteArrayInputStream("-5 2 2 g 2".getBytes());
+    System.setIn(inp);
+    Recursion rec = new Recursion();
+    rec.main(args);
     System.setIn(sysInBackup);
   }
 }

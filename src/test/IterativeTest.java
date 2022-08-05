@@ -4,9 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import code.Iterative;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Logger;
 import org.junit.Test;
 
 /**
@@ -67,11 +65,14 @@ public class IterativeTest {
   @Test
     public void mainTest() {
     final InputStream sysInBackup = System.in;
-    final ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
-    System.setIn(inp);
     final String[] args = new String[0];
-    Iterative itr = new Iterative();
+    ByteArrayInputStream inp = new ByteArrayInputStream("c 2 2 g 2".getBytes());
+    System.setIn(inp);
     Iterative.main(args);
+    inp = new ByteArrayInputStream("-5 2 2 2 g 2".getBytes());
+    System.setIn(inp);
+    Iterative itr = new Iterative();
+    itr.main(args);
     System.setIn(sysInBackup);
   }
 

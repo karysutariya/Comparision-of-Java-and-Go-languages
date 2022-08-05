@@ -106,7 +106,11 @@ public class Recursion {
     while (conditon) {
       try {
         totaln = inputUser.nextInt();
-        conditon = false;
+        if (totaln <= 0) {
+          LOG.info("Please Enter a positive and non-zero number."); 
+        } else {
+          conditon = false;
+        }
       } catch (InputMismatchException e) {
         inputUser.next();
         LOG.warning("Please enter a number!");
